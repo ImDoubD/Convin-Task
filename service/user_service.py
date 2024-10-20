@@ -37,10 +37,8 @@ def register_user(data: dict, db: Session):
     if user_exists:
         raise HTTPException(status_code=400, detail="Email or mobile number is already taken.")
     
-    # Hash the user's password
     hashed_password = hash_password(data['password'])
 
-    # Create a new user instance
     new_user = User(
         name=data['name'],
         email=data['email'],
@@ -57,21 +55,21 @@ def register_user(data: dict, db: Session):
 
 # Logic to authenticate a user during login
 def authenticate_user(email: str, password: str, db: Session):
-    # Check if the user exists by their name
+    # Check if the user exists by their email
     user = db.query(User).filter(User.email == email).first()
     if not user:
         raise HTTPException(status_code=401, detail="Invalid email or password.")
 
-    # Verify the password using bcrypt
+    # Verify password using bcrypt
     if not verify_password(password, user.hashed_password):
         raise HTTPException(status_code=401, detail="Invalid email or password.")
     
-    # Create a JWT token for the authenticated user
+    # JWT token creation for the authenticated user
     token = create_access_token({"user_id": str(user.id), "email": email})
 
     user.token = token
     db.commit() 
-    
+
     return {"access_token": token}
 
 
