@@ -33,7 +33,7 @@ pip install -r requirements.txt
     "mobile": "+12345678999"
   }
   ```
-  This above api is for registration of users, where the user's details are inserted in the database.
+  This above API is for registration of users, where the user's details are inserted in the database.
 - Post `http://127.0.0.1:8000/auth/login` \
   Sample input:
   ```bash
@@ -42,13 +42,13 @@ pip install -r requirements.txt
     "password": "password123"
   }
   ```
-  This above api log in the user and generate the bearer JWT token for authorization. This token will be stored in the database, which will remain active for 120 minutes. 
+  This above API log in the user and generate the bearer JWT token for authorization. This token will be stored in the database, which will remain active for 120 minutes. 
 - Get `http://127.0.0.1:8000/auth/user/details` \
   Sample input:
   ```bash
   <Bearer> : Token [Authorization]
   ```
-  This above api will fetch authorized user personal details.
+  This above API will fetch authorized user personal details.
 - Post `http://127.0.0.1:8000/operation/expense/add` \
   Sample input:
   Sample input:
@@ -65,7 +65,7 @@ pip install -r requirements.txt
     ]
   }
   ```
-  This above api will let the authorized user to create expense, by tagging other users in it. 
+  This above API will let the authorized user to create expense, by tagging other users in it. 
 - Get `http://127.0.0.1:8000/operation/expense/{expense_id}` \
   Sample input:
   Sample input:
@@ -74,19 +74,19 @@ pip install -r requirements.txt
   url = http://127.0.0.1:8000/operation/expense/1
   <Bearer> : Token [Authorization]
   ```
-  This above api will let the authorized user fetch a particular expense details created by him/her, validating the expense using provided expense_id.
+  This above API will let the authorized user fetch a particular expense details created by him/her, validating the expense using provided expense_id.
 - Get `http://127.0.0.1:8000/operation/expenses/user` \
   Sample input:
   ```bash
   <Bearer> : Token [Authorization]
   ```
-  This above api fetches all the details including the expense data of the authorized user in which he/she is tagged, along with the amount owed.
+  This above API fetches all the details including the expense data of the authorized user in which he/she is tagged, along with the amount owed.
 - Get `http://127.0.0.1:8000/operation/expenses/overall` \
   Sample input:
   ```bash
   <Bearer> : Token [Authorization]
   ```
-  This above api fetches all the details along with the expense data of all the users currently in the system. This api can be only hit by an authorized user.
+  This above API fetches all the details along with the expense data of all the users currently in the system. This API can be only hit by an authorized user.
 - Get `http://127.0.0.1:8000/balance-sheet/user/{user_id}` \
   Sample input:
   ```bash
@@ -94,11 +94,11 @@ pip install -r requirements.txt
   url = http://127.0.0.1:8000/balance-sheet/user/1
   <Bearer> : Token [Authorization]
   ```
-  This above api generates balance sheet csv of the authorized user details along with all the expenses' details in which he/she is tagged and amount owed. This api validates whether the user_id provided is same as the user_id of the authorized user from the JWT token, then provides the access accordingly.
+  This above API generates balance sheet csv of the authorized user details along with all the expenses' details in which he/she is tagged and amount owed. This API validates whether the user_id provided is same as the user_id of the authorized user from the JWT token, then provides the access accordingly.
 - Get `http://127.0.0.1:8000/balance-sheet/overall` \
   Sample input:
   ```bash
   <Bearer> : Token [Authorization]
   ```
-  This above api generates balance sheet csv with all the details along with the expense data of all the users currently in the system. This api can be only hit by an authorized user.
+  This above API generates balance sheet csv with all the details along with the expense data of all the users currently in the system. This API can be only hit by an authorized user.
 - In terminal, type `pytest` which in return will start the unit tests for the controller and service methods.
