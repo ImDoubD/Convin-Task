@@ -1,0 +1,22 @@
+user_id,name,email,mobile,expense_ids,descriptions,total_amounts,amount_owed,created_at
+1,John Doe,johndoe@example.com,+1234567890,"3
+4
+6
+8
+9","Dinner at Restaurant
+Dinner at Restaurant
+Dinner at Restaurant
+Dinner at Restaurant
+Dinner at Restaurant","120.0
+110.0
+150.0
+999.0
+999.0","40.0
+36.666666666666664
+35.0
+333.0
+249.75","2024-10-20T15:59:46.222099
+2024-10-20T15:59:46.222099
+2024-10-20T15:59:46.222099
+2024-10-20T15:59:46.222099
+2024-10-20T15:59:46.222099"
