@@ -2,7 +2,7 @@
  To create a Daily Expenses Sharing Application. This application can register, authorize a user, add personalized expenses with user tagging, fetch individual user expense data, overall user expense data, generate balance sheet csv for individual user data, overall users in the system.
 
 ## Installation
-This package uses Python 3.12.
+This package uses Python 3.12.7
 ```bash
 python -m venv env
 .\env\Scripts\Activate
@@ -16,6 +16,9 @@ pip install -r requirements.txt
 - Further config.py consists of connection and authorization secrets and security.py consists of methods for proper authorization through bearer JWT token generation and decoding those JWT tokens when endpoints are being hit to get access to user and expense details. These tokens are generated when login takes place after successful registration and time limit is of 120 minutes as of now.
 - Database used is PostgreSQL which is deployed on Render.
 - Certain unit tests are also written using pytest and httpx for the controller APIs and service methods.
+- When balance sheet APIs for individual user expense details and overall all users (currently in system) expense details is hit, this generates balance-sheet folder in the directory where then the csv is saved.
+  - ***Here I have assumed that overall user balance sheet will have expense details of all the users in currently in the database***.
+  - Individual balance sheet saved by : `{name}_balance_sheet.csv` and Overall balance sheet saved by : `overall_balance_sheet.csv` in balance-sheet folder
 
 ## Run and Test the application
 - Clone the github repository
@@ -94,11 +97,11 @@ pip install -r requirements.txt
   url = http://127.0.0.1:8000/balance-sheet/user/1
   <Bearer> : Token [Authorization]
   ```
-  This above API generates balance sheet csv of the authorized user details along with all the expenses' details in which he/she is tagged and amount owed. This API validates whether the user_id provided is same as the user_id of the authorized user from the JWT token, then provides the access accordingly.
+  This above API generates balance sheet csv of the authorized user details along with all the expenses' details in which he/she is tagged and amount owed. This API validates whether the user_id provided is same as the user_id of the authorized user from the JWT token, then provides the access accordingly. Balance sheet csv saved in balance-sheet folder by {name}_balance_sheet.csv. 
 - Get `http://127.0.0.1:8000/balance-sheet/overall` \
   Sample input:
   ```bash
   <Bearer> : Token [Authorization]
   ```
-  This above API generates balance sheet csv with all the details along with the expense data of all the users currently in the system. This API can be only hit by an authorized user.
+  This above API generates balance sheet csv with all the details along with the expense data of all the users currently in the system. This API can be only hit by an authorized user. Balance sheet csv saved in balance-sheet folder by overall_balance_sheet.csv.
 - In terminal, type `pytest` which in return will start the unit tests for the controller and service methods.
