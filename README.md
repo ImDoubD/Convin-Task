@@ -24,7 +24,7 @@ pip install -r requirements.txt
 - Clone the github repository
 - Pip install all the given requirements in virtual environment as provided in the installation part.
 - The database is deployed so these APIs can be hit without any problem.
-- To start the server, use command: `uvicorn main:app --reload`
+- To start the server, use command: `uvicorn main:app --reload` \
   Hit the API's (in Postman or Thunderclient) in this order: 
 - Post `http://127.0.0.1:8000/auth/register` \
   Sample input:
